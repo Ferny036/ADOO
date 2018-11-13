@@ -1,0 +1,286 @@
+<!--plantilla principal-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Documentación ADOO</title>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" media="screen" href="tools/materialize/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<style>
+	@import url('https://fonts.googleapis.com/css?family=Slabo+27px');
+
+	body {
+		display: flex;
+		min-height: 100vh;
+		flex-direction: column;
+		font-family: 'Slabo 27px', serif;
+	}
+	section#contenidos {
+		flex: 1 0 auto;
+	}
+	html {
+		scroll-behavior: smooth;
+	}
+
+	h1{
+		opacity: 1;
+		animation: fade 2s linear;
+	}
+	nav#barra{
+		background-color: hsla(282, 24%, 0%, 0.87);
+
+	}
+
+	#logo img{
+		background-color: #FFF;
+	}
+	.container h1{
+
+		text-shadow: 3px 3px #C0C0C0;
+	}
+	</style>
+	<script type="text/javascript" src="tools/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="tools/materialize/js/materialize.min.js"></script>
+	<script type="text/javascript" src="tools/jquery-confirm.js"></script>
+
+	<script>
+	$(document).ready(function(){
+		$('.sidenav').sidenav();
+		$('.parallax').parallax();
+		$('.fixed-action-btn').floatingActionButton();
+		$(".dropdown-trigger").dropdown();
+	});
+	</script>
+</head>
+<body id="inicio">
+
+
+	<div class="navbar-fixed">
+		<nav id="barra">
+			<div class="nav-wrapper">
+				<a href="#!" class="brand-logo" id="logo"><img src="escom.png" class="responsive-img" width="120px"/></a>
+				<a href="#" data-target="barra_lateral" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+				<ul class="right hide-on-med-and-down">
+					<li><a href="#planteamiento">Planteamiento del problema</a></li>
+					<li><a href="#objetivos">Objetivos</a></li>
+					<li><a href="#planificacion">Planificaci&oacute;n de actividades</a></li>
+					<li><a href="#perfiles">Perfiles</a></li>
+					<!--
+					<li><a href="mobile.html">Necesidades</a></li>
+					<li><a href="mobile.html">Competencia</a></li>
+					<li><a href="mobile.html">Caracter&iacute;sticas</a></li>
+					<li><a href="mobile.html">Restricciones y riesgos</a></li>
+					<li><a href="mobile.html">Glosario</a></li>-->
+				</ul>
+			</div>
+		</nav>
+	</div>
+
+	<ul class="sidenav" id="barra_lateral">
+		<li><a href="sass.html">Sass</a></li>
+		<li><a href="badges.html">Components</a></li>
+		<li><a href="collapsible.html">Javascript</a></li>
+		<li><a href="mobile.html">Mobile</a></li>
+	</ul>
+
+	<div class="parallax-container">
+		<div class="container">
+			<h1 class="header center white-text">
+				Sistema Gestor de Actividades Escolares
+			</h1>
+		</div>
+
+		<div class="parallax"><img src="fondo_escom.jpg"></div>
+	</div>
+	<div class="section white" id="planteamiento">
+		<div class="container">
+			<h1 class="header center blue-text text-lighten-2">
+				Planteamiento del problema
+			</h1>
+			<div class="row">
+				En la &eacute;poca actual hay mucha informaci&oacute;n, sin embargo, la que necesitamos se encuentra dispersa o almacenada en distintos lugares, tanto
+				f&iacute;sicos como en la web; a pesar de que la comunidad de ESCOM cuenta con medios para la obtenci&oacute;n de informaci&oacute;n sobre lo que ocurre en
+				el plantel, como la p&aacute;gina web principal y las redes sociales correspondientes, el hecho de que esto se encuentre separado genera conflicto, ya
+				que la p&aacute;gina web en ocasiones omite las publicaciones de las redes sociales, con ello es f&aacute;cil que se pierda credibilidad, por lo tanto, se
+				pierde el inter&eacute;s y atenci&oacute;n prestada a los anuncios en estas plataformas, el alcance es limitado, el alumnado no interact&uacute;a con los anuncios y
+				avisos, desconoce las actividades y sus horarios, esto origina la falta de participaci&oacute;n y poca asistencia a los eventos de cualquier &iacute;ndole dentro
+				de la unidad acad&eacute;mica.
+			</div>
+		</div>
+
+	</div>
+	<div class="parallax-container">
+		<div class="parallax"><img src="parallax2.jpg"></div>
+
+		<div class="container">
+
+		</div>
+
+	</div>
+	<div class="section white" id="objetivos">
+		<div class="container">
+			<div class="section">
+				<h1 class="header center blue-text text-lighten-2">
+					Objetivos
+				</h1>
+				<h4 class="header center black-text text-lighten-2">
+					Objetivo general
+				</h4>
+
+				<div class="row center">
+					Realizar una herramienta que brinde informaci&oacute;n al alumnado de ESCOM
+					acerca de las actividades que se realizan en las instalaciones.
+				</div>
+				<h4 class="header center black-text text-lighten-2">
+					Objetivos espec&iacute;ficos
+				</h4>
+				<!--   Icon Section   -->
+				<div class="row">
+					<div class="col s12 m4">
+						<div class="icon-block">
+							<h2 class="center brown-text"><i class="material-icons">school</i></h2>
+							<h5 class="center">Aulas</h5>
+
+							<p class="light">Exponer la disposición de las aulas, las actividades dentro de ellas y dar referencias sobre las unidades de aprendizaje.</p>
+						</div>
+					</div>
+
+					<div class="col s12 m4">
+						<div class="icon-block">
+							<h2 class="center brown-text"><i class="material-icons">library_books</i></h2>
+							<h5 class="center">Recursos acad&eacute;micos</h5>
+
+							<p class="light">Tener acceso a un compendio de recursos académicos (bibliográficos, didácticos, conferencias, exposiciones, becas ) , culturales (clubs) y deportivos (equipos) brindadas dentro de la unidad.</p>
+						</div>
+					</div>
+
+					<div class="col s12 m4">
+						<div class="icon-block">
+							<h2 class="center brown-text"><i class="material-icons">timer</i></h2>
+							<h5 class="center">Disponibilidad de espacios</h5>
+
+							<p class="light">Presentar de forma gráfica la disponibilidad y horarios de aulas, laboratorios, biblioteca, CAE, sanitarios y áreas deportivas. </p>
+						</div>
+					</div>
+
+				</div>
+				<div class="row">
+					<div class="col s12 m4">
+						<div class="icon-block">
+							<h2 class="center brown-text"><i class="material-icons">store</i></h2>
+							<h5 class="center">Materiales</h5>
+
+							<p class="light">Desplegar indicaciones y recomendaciones sobre la compra de materiales requeridos es las UAs.</p>
+						</div>
+					</div>
+
+					<div class="col s12 m4">
+						<div class="icon-block">
+							<h2 class="center brown-text"><i class="material-icons">insert_drive_file</i></h2>
+							<h5 class="center">Trayectoria profesores</h5>
+
+							<p class="light">Mostrar la trayectoria profesional de los profesores (curriculum), permitiendo además la retroalimentación (nivel de aprobación) por parte del alumnado.</p>
+						</div>
+					</div>
+
+					<div class="col s12 m4">
+						<div class="icon-block">
+							<h2 class="center brown-text"><i class="material-icons">date_range</i></h2>
+							<h5 class="center">Eventos</h5>
+
+							<p class="light">Divulgar información acerca de eventos dentro de las instalación y de la unidad académica dentro y fuera del instituto.</p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+	<div class="parallax-container">
+		<div class="parallax"><img src="parallax2.jpg"></div>
+
+		<div class="container">
+
+		</div>
+
+	</div>
+
+	<div class="section white" id="planificacion">
+		<div class="container">
+			<h1 class="header center blue-text text-lighten-2" >
+				Planificaci&oacute;n de actividades y stakeholders
+			</h1>
+			<div class="row center">
+				<img src="actividades.jpg" class="responsive-img">
+			</div>
+			<div class="row center">
+				<img src="stakeholders.PNG" class="responsive-img">
+			</div>
+
+		</div>
+	</div>
+
+
+
+	<div class="parallax-container">
+		<div class="parallax"><img src="parallax2.jpg"></div>
+
+		<div class="container">
+
+		</div>
+
+	</div>
+
+	<div class="section white" id="perfiles" >
+
+
+		<div class="container">
+			<div class="section">
+				<h1 class="header center blue-text text-lighten-2">
+					Perfiles de usuario y necesidades
+				</h1>
+				<!--   Icon Section   -->
+				<div class="row">
+					<div class="col s12 m6">
+						<div class="icon-block">
+							<h2 class="center black-text"><i class="material-icons">vpn_key</i></h2>
+							<h5 class="center">Administrador</h5>
+
+							<p class="light">Ser&aacute; el encargado de actualizar la informaci&oacute;n que se escribe en el sistema, como por ejemplo los eventos que se lleva  a cabo en la escuela e informaci&oacute;n de las actividades extracurriculares entre otros.</p>
+						</div>
+					</div>
+
+					<div class="col s12 m6">
+						<div class="icon-block">
+							<h2 class="center black-text"><i class="material-icons">school</i></h2>
+							<h5 class="center">Alumno</h5>
+
+							<p class="light"> Visualizar e interactuar con el contenido que brinda la plataforma adem&aacute;s de participar en ella agregando comentario en ciertos m&oacute;dulos.</p>
+						</div>
+					</div>
+
+				</div>
+				<div class="row center">
+					<img src="necesidades.PNG" class="responsive-img">
+				</div>
+			</div>
+		</div>
+
+
+
+	</div>
+
+
+
+	<div class="fixed-action-btn">
+		<a class="btn-floating btn-large blue" href="#inicio">
+			<i class="large material-icons">arrow_upward</i>
+		</a>
+	</div>
+</body>
+</html>
