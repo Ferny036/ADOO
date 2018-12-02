@@ -1,4 +1,3 @@
-<%@ page import = "java.io.*,java.util.*" %>
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
   <head>
@@ -6,6 +5,6 @@
       <title>ADOO</title>
     </head>
     <body>
-      
+      <h1>Hola Mundo</h1>
     </body>
   </html>

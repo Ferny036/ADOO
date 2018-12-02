@@ -24,9 +24,48 @@ public class Grupo
     return nombre;
   }
 
-  public void setId(int id)
+  public int getId()
   {
-      this.id = id;
+      return id;
   }
 
+  public void setId(int id)
+  {
+    this.id = id;
+  }
+
+  public void setNombre(String nombre)
+  {
+    this.nombre = nombre;
+   }
+
+  public void setUa(UnidadDeAprendizaje ua)
+  {
+    this.ua = ua;
+  }
+
+  public void setHorario(Vector<Horario> horario)
+  {
+    this.horario = horario;
+  }
+
+  public void setProfesor(Profesor profesor)
+  {
+    this.profesor = profesor;
+  }
+
+  public UnidadDeAprendizaje getUa()
+  {
+    return ua;
+  }
+
+  public Vector<Horario> getHorario()
+  {
+    return horario;
+  }
+
+  public Profesor getProfesor()
+  {
+    return profesor;
+  }
 }

@@ -6,6 +6,7 @@ public class Alumno extends Usuario
 {
 
   private String boleta;
+  private int id;
   private String apellidoMaterno;
   private String apellidoPaterno;
   private Vector<Publicacion> publicacionesRealizadas;
@@ -23,7 +24,22 @@ public class Alumno extends Usuario
 
   public String getNombre()
   {
-    return nombre + " " + apellidoMaterno + " " + apellidoPaterno;
+    return nombre;
+  }
+
+  public String getApellidoMaterno()
+  {
+    return apellidoMaterno;
+  }
+
+  public String getApellidoPaterno()
+  {
+    return apellidoMaterno;
+  }
+
+  public String getNombreCompleto()
+  {
+    return nombre + " " + apellidoPaterno + " " + apellidoPaterno;
   }
 
   public String getPassword()
@@ -44,5 +60,49 @@ public class Alumno extends Usuario
   public Vector<Publicacion> getPublicacionesRealizadas()
   {
       return publicacionesRealizadas;
+  }
+
+  public int getId()
+  {
+      return id;
+  }
+  public void setId(int id)
+  {
+    this.id = id;
+  }
+
+  public void setApellidoMaterno(String apellidoMaterno)
+  {
+      this.apellidoMaterno = apellidoMaterno;
+  }
+
+  public void setApellidoPaterno(String apellidoPaterno)
+  {
+      this.apellidoPaterno = apellidoPaterno;
+  }
+
+  public void setNombre(String nombre)
+  {
+      this.nombre = nombre;
+  }
+
+  public void setPassword(String password)
+  {
+      this.password = password;
+  }
+
+  public void setEmail(String email)
+  {
+      this.email = email;
+  }
+
+  public void setPublicacionesRealizadas(Vector<Publicacion> publicacionesRealizadas)
+  {
+      this.publicacionesRealizadas = publicacionesRealizadas;
+  }
+
+  public void setBoleta(String boleta)
+  {
+      this.boleta = boleta;
   }
 }

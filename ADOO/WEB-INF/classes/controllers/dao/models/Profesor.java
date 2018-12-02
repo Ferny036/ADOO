@@ -19,17 +19,6 @@ public class Profesor
     this.gruposAsignados = grupos;
     this.unidadesDeAprendizajeAsignadas = uas;
   }
-  /*
-  public String getId()
-  {
-    return id;
-  }
-  */
-  public void setId(int id)
-  {
-    this.id = id;
-  }
-
 
   public File getCurriculum()
   {
@@ -51,8 +40,39 @@ public class Profesor
     return gruposAsignados;
   }
 
+  public Vector<UnidadDeAprendizaje> getUnidadesDeAprendizajeAsignadas()
+  {
+    return unidadesDeAprendizajeAsignadas;
+  }
+
+
+  public int getId()
+  {
+    return id;
+  }
+
+  public void setId(int id)
+  {
+    this.id = id;
+  }
+
   public void setNombre(String nombre)
   {
     this.nombre = nombre;
+  }
+
+  public void setCurriculum(File curriculum)
+  {
+    this.curriculum = curriculum;
+  }
+
+  public void setUnidadesDeAprendizajeAsignadas(Vector<UnidadDeAprendizaje> unidadesDeAprendizajeAsignadas)
+  {
+    this.unidadesDeAprendizajeAsignadas = unidadesDeAprendizajeAsignadas;
+  }
+
+  public void setGruposAsignados(Vector<Grupo> gruposAsignados)
+  {
+    this.gruposAsignados = gruposAsignados;
   }
 }

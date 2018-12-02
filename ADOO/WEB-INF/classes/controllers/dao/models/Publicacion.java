@@ -1,6 +1,7 @@
 package models;
 
 import java.util.*;
+import java.sql.Date;
 
 public class Publicacion
 {
@@ -38,5 +39,36 @@ public class Publicacion
     {
       return comentarios;
     }
+
+    public int getId()
+    {
+        return id;
+    }
+
+    public void setComentarios(Vector<Comentario> comentarios)
+    {
+        this.comentarios = comentarios;
+    }
+
+    public void setAutor(Alumno autor)
+    {
+      this.autor = autor;
+    }
+
+    public void setContenido(String contenido)
+    {
+        this.contenido = contenido;
+    }
+
+    public void setFecha(Date fecha)
+    {
+        this.fecha = fecha;
+    }
+
+    public void setId(int id)
+    {
+      this.id = id;
+    }
+
 
 }

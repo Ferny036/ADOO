@@ -21,24 +21,28 @@ public class Administrador extends Usuario{
     return email;
   }
 
-  public void iniciarSesion()
+  public int getId()
   {
-
+    return id;
   }
 
-  public void notificarEventos()
+  public void setNombre(String nombre)
   {
-
+    this.nombre = nombre;
   }
 
-  public void modificarPassword()
+  public void setPassword(String password)
   {
-
+    this.password = password;
   }
 
-  public void recuperarPassword()
-  {
+   public void setEmail(String email)
+   {
+     this.email = email;
+   }
 
-  }
-
+   public void setId(int id)
+   {
+     this.id = id;
+   }
 }
