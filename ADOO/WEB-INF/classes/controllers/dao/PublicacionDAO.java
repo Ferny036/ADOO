@@ -1,44 +1,44 @@
 package dao;
 
-import java.util.Vector;
+import java.util.*;
 import models.*;
 import java.sql.*;
 
-public class ComentarioDAO implements DAOInterface<Comentario>
+public class PublicacionDAO implements DAOInterface<Publicacion>
 {
+  Vector<Publicacion> listaPublicaciones;
+  DAOInterface<Publicacion> dao;
 
-  Vector<Comentario> listaComentarios;
-  DAOInterface<Comentario> dao;
-
-  public ComentarioDAO() throws SQLException
+  public PublicacionDAO() throws SQLException
   {
     Connection conex = null;
     Statement statement = null;
     ResultSet rs = null;
+    listaPublicaciones = new Vector<Publicacion>();
 
-    listaComentarios = new Vector<Comentario>();
     conex = getConnection();
     statement = conex.createStatement();
 
-    rs = statement.executeQuery("SELECT * FROM Comentario;");
+    rs = statement.executeQuery("SELECT * FROM Publicacion;");
 
     while(rs.next())
     {
-      Comentario m = new Comentario(
+      Publicacion p = new Publicacion(
       rs.getString("contenido"),
-      rs.getDate("fecha"),
+      rs.getDate("Fecha"),
       null,
-      new Vector<Comentario>()
+      null
       );
-      m.setId(rs.getInt("idComentario"));
-      asignarAutor(m);
-      asignarComentarios(m);
-      listaComentarios.add(m);
+      p.setId(rs.getInt("idPublicacion"));
+
+      asignarAutor(p);
+      asignarComentarios(p);
+
     }
     conex.close();
   }
 
-  public void asignarAutor(Comentario com) throws SQLException
+  public void asignarAutor(Publicacion p) throws SQLException
   {
     Connection conex = getConnection();
     Statement statement = conex.createStatement();
@@ -46,7 +46,7 @@ public class ComentarioDAO implements DAOInterface<Comentario>
 
     if(rs.next())
     {
-      Alumno autor = new Alumno(
+      Alumno al = new Alumno(
       rs.getString("nombre"),
       rs.getString("password"),
       rs.getString("email"),
@@ -55,74 +55,54 @@ public class ComentarioDAO implements DAOInterface<Comentario>
       rs.getString("apellidoPaterno"),
       null
       );
-      autor.setId(rs.getInt("idAlumno"));
-      com.setAutor(autor);
+      al.setId(rs.getInt("idAlumno"));
+      p.setAutor(al);
     }
     conex.close();
   }
 
-  public void asignarComentarios(Comentario com) throws SQLException
+  public void asignarComentarios(Publicacion pub) throws SQLException
   {
     Connection conex = getConnection();
     Statement statement = conex.createStatement();
-    ResultSet rs = statement.executeQuery("SELECT * FROM "); // INNNER para obtener los comentarios asociados
+    ResultSet rs = statement.executeQuery("SELECT * FROM ");
 
     while(rs.next())
     {
-      Comentario m = new Comentario(
+      Comentario com = new Comentario(
       rs.getString("contenido"),
       rs.getDate("fecha"),
       null,
       null
       );
-      m.setId(rs.getInt("idComentario"));
-      com.getComentarios().add(m);
+      com.setId(rs.getInt("idComentario"));
+      pub.getComentarios().add(com);
     }
     conex.close();
   }
 
-  //Establecer conexion
-  public Connection getConnection()
+  //Leer una publicacion
+  public Publicacion read(int id)
   {
-    try{
-
-      Class.forName("com.mysql.jdbc.Driver");
-
-      return DriverManager.getConnection(dao.url + dao.dbName, "root", "" );
-
-
-    }catch(SQLException sql){
-      sql.printStackTrace();
-    }catch(ClassNotFoundException cl){
-      cl.printStackTrace();
-    }
-
-    return null;
+    return listaPublicaciones.get(id);
+  }
+  //Leer todas las publicaciones
+  public Vector<Publicacion> read()
+  {
+    return listaPublicaciones;
   }
 
-  //Leer un unico comentario de la lista
-  public Comentario read(int id)
-  {
-    return listaComentarios.get(id);
-  }
-
-  //Leer todos los comentarios
-  public Vector<Comentario> read()
-  {
-    return listaComentarios;
-  }
-
-  //Crear un nuevo comentario
-  public void create(Comentario c)
+  //Crear
+  public void create(Publicacion c)
   {
     Connection conex = null;
     Statement statement = null;
     PreparedStatement ps = null;
 
-    listaComentarios.add(c);
+    listaPublicaciones.add(c);
 
     try{
-      String sql = "INSERT into comentario(contenido, fecha) VALUES (?,?)";
+      String sql = "INSERT into publicacion(contenido, fecha) VALUES (?,?)";
       conex = getConnection();
       ps = conex.prepareStatement(sql);
       ps.setString(1, c.getContenido());
@@ -136,20 +116,20 @@ public class ComentarioDAO implements DAOInterface<Comentario>
     }
   }
 
-  //Editar un comentario
-  public void update(int id, Comentario t)
+  //Editar
+  public void update(int id, Publicacion t)
   {
     Connection conex = null;
     Statement statement = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
 
-    Comentario c = read(id);
+    Publicacion c = read(id);
 
     try{
-      String sql = "UPDATE Comentario "+
+      String sql = "UPDATE Publicacion "+
       "SET contenido = '"+t.getContenido()+"', fecha = '"+t.getFecha()+
-      "' WHERE idComentario = "+c.getId()+";";
+      "' WHERE idPublicacion = "+c.getId()+";";
       conex = getConnection();
       ps = conex.prepareStatement(sql);
       ps.executeUpdate();
@@ -159,22 +139,22 @@ public class ComentarioDAO implements DAOInterface<Comentario>
       sql.printStackTrace();
     }
 
+    t.setId(c.getId());
     t.setComentarios(c.getComentarios());
     t.setAutor(c.getAutor());
-    t.setId(c.getId());
-    listaComentarios.set(id, t);
+    listaPublicaciones.set(id, t);
   }
 
-  //Eliminar un comentario
+  //Eliminar
   public void delete(int id)
   {
     Connection conex = null;
     Statement statement = null;
 
-    Comentario c = read(id);
+    Publicacion c = read(id);
 
     try{
-      String sql = "DELETE FROM Comentario WHERE idComentario = "+c.getId()+";";
+      String sql = "DELETE FROM Publicacion WHERE idPublicacion = "+c.getId()+";";
       conex = getConnection();
       statement = conex.createStatement();
       statement.executeUpdate(sql);
@@ -184,6 +164,23 @@ public class ComentarioDAO implements DAOInterface<Comentario>
       sql.printStackTrace();
     }
 
-    listaComentarios.removeElementAt(id);
+    listaPublicaciones.removeElementAt(id);
+  }
+
+  public Connection getConnection()
+  {
+    try{
+
+      Class.forName("com.mysql.jdbc.Driver");
+
+      return DriverManager.getConnection(dao.url + dao.dbName, "root", "" );
+
+    }catch(SQLException sql){
+      sql.printStackTrace();
+    }catch(ClassNotFoundException cl){
+      cl.printStackTrace();
+    }
+
+    return null;
   }
 }

@@ -1,6 +1,7 @@
 package models;
 
 import java.util.*;
+import java.sql.Date;
 
 public class Evento
 {
@@ -10,12 +11,11 @@ public class Evento
     private Horario hora[];
     private int id;
 
-    public Evento(String nombre, String descripcion, Date fecha, Horario hora[], int id) {
+    public Evento(String nombre, String descripcion, Date fecha, Horario hora[]) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fecha = fecha;
         this.hora = hora;
-        this.id = id;
     }
 
     public String getNombre()
@@ -61,5 +61,10 @@ public class Evento
     public void setHora(Horario hora[])
     {
         this.hora = hora;
+    }
+
+    public void setId(int id)
+    {
+      this.id = id;
     }
 }

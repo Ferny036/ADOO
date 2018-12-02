@@ -7,17 +7,14 @@ public interface DAOInterface<T>{
 
   final String url = "jdbc:mysql://localhost:3306/";
   final String dbName = "";
-  Connection conex = null;
-  Statement statement = null;
-  ResultSet rs = null;
 
   T read(int id);
 
   Vector<T> read();
 
-  void create();
+  void create(T t);
 
-  void update(int id);
+  void update(int id, T t);
 
   void delete(int id);
 }

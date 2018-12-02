@@ -47,8 +47,39 @@ public class UnidadDeAprendizaje{
     return grupos;
   }
 
+  public int getId()
+  {
+      return id;
+  }
+
   public void setId(int id)
   {
-      this.id = id;
+    this.id = id;
   }
+
+  public void setNombre(String nombre)
+  {
+    this.nombre = nombre;
+  }
+
+  public void setTemario(File temario)
+  {
+    this.temario = temario;
+  }
+
+  public void setCreditos(float creditos)
+  {
+    this.creditos = creditos;
+  }
+
+  public void setProfesores(Vector<Profesor> profesores)
+  {
+    this.profesores = profesores;
+  }
+
+  public void setGrupos(Vector<Grupo> grupos)
+  {
+    this.grupos = grupos;
+  }
+
 }

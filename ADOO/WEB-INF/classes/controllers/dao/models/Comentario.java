@@ -1,5 +1,6 @@
 package models;
 
+import java.sql.Date;
 import java.util.*;
 
 public class Comentario
@@ -9,6 +10,7 @@ public class Comentario
   private Date fecha;
   private Vector<Comentario> comentarios;
   private Alumno autor;
+  private int id;
 
   public Comentario(String contenido, Date fecha, Alumno autor, Vector comentarios)
   {
@@ -37,5 +39,35 @@ public class Comentario
   public Alumno getAutor()
   {
     return autor;
+  }
+
+  public int getId()
+  {
+      return id;
+  }
+
+  public void setAutor(Alumno autor)
+  {
+    this.autor = autor;
+  }
+
+  public void setContenido(String contenido)
+  {
+      this.contenido = contenido;
+  }
+
+  public void setComentarios(Vector<Comentario> comentarios)
+  {
+    this.comentarios = comentarios;
+  }
+
+  public void setFecha(Date fecha)
+  {
+      this.fecha = fecha;
+  }
+
+  public void setId(int id)
+  {
+    this.id = id;
   }
 }

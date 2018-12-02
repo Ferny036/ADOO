@@ -4,37 +4,85 @@ import java.util.*;
 import java.sql.*;
 import models.*;
 
-public class AdministradorDAO extends Administrador implements DAOInterface
+public class AdministradorDAO implements DAOInterface<Administrador>
 {
+  Administrador admin;
+  Connection conex = null;
+  Statement statement = null;
+  PreparedStatement ps = null;
+  ResultSet rs = null;
 
-  public AdministradorDAO(String nombre, String password, String email)
+  DAOInterface<Administrador> dao;
+
+  public AdministradorDAO() throws SQLException
   {
-      super(nombre, password, email);
-      Class.forName("com.mysql.jdbc.Driver");
-      Connection conex = DriverManager.getConnection(url+dbName, "root", "" );
-      Statement statement = conex.createStatement();
+    conex = getConnection();
+    statement = conex.createStatement();
+
+    rs = statement.executeQuery("SELECT * FROM Administrador;");
+
+    if(rs.next())
+    {
+      admin = new Administrador(
+      rs.getString("nombre"),
+      rs.getString("password"),
+      rs.getString("email")
+      );
+
+      admin.setId(rs.getInt("idAdministrador"));
+
+    }
+    conex.close();
   }
 
-  Administrador read(int id)
+  public Connection getConnection()
   {
+    try{
 
+      Class.forName("com.mysql.jdbc.Driver");
+
+      return DriverManager.getConnection(dao.url + dao.dbName, "root", "" );
+
+    }catch(SQLException sql){
+      sql.printStackTrace();
+    }catch(ClassNotFoundException cl){
+      cl.printStackTrace();
+    }
+
+    return null;
+  }
+
+  public Administrador read(int id)
+  {
+    return admin;
   }
   //DAdo que no existe mas q un administrador no es necesario llamar a todos los registros
-  Vector<Administrador> read()
-  {}
+  public Vector<Administrador> read()
+  { return null; }
 
-  //Un administrador no puede ser creado
-  void create()
-  {}
+    //Un administrador no puede ser creado
+    public void create(Administrador t)
+    {}
 
-  void update(int id)
-  {
+      public void update(int id, Administrador t)
+      {
 
-  }
+        try{
+          String sql = "UPDATE administrador "+
+          "SET nombre = '"+t.getNombre()+"', password = '"+t.getPassword()+
+          "', email = '"+t.getEmail()+"' WHERE idAdministrador = "+this.admin.getId()+";";
+          conex = getConnection();
+          ps = conex.prepareStatement(sql);
+          ps.executeUpdate();
+          conex.close();
 
-  //No puedes eliminar el administrador
-  void delete(int id)
-  {
-
-  }
-}
+        }catch(SQLException sql){
+          sql.printStackTrace();
+        }
+        t.setId(this.admin.getId());
+        this.admin = t;
+      }
+      //No podemos borrar al administrador
+      public void delete(int id)
+      {}
+      }
